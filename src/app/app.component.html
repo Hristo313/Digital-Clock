@@ -1,0 +1,12 @@
+<div class="container d-flex flex-column align-items-center">
+  <h1>{{title}}</h1>
+  <div class="form-group w-50">
+    <label for="timeFormat" class="fs-5">Select Time Format:</label>
+    <select id="timeFormat" class="form-control form-control-lg" [(ngModel)]="selectedFormat">
+      <option *ngFor="let format of formats" [value]="format.format">
+      {{ format.format }} ({{ format.description }})
+      </option>
+    </select>
+  </div>
+  <app-digital-clock [currentTimeFormat]="selectedFormat"></app-digital-clock>
+</div>
