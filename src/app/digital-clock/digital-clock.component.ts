@@ -17,7 +17,7 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
   public firstSecondDigit: string = '';
   public secondSecondDigit: string = '';
   public periodOfDay: string = '';
-  public showPeriodOfday: boolean = false;
+  public showPeriodOfDay: boolean = false;
   public showHourDecorations: boolean = false;
   private destroy$ = new Subject<void>();
 
@@ -63,10 +63,10 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
   // Skip AM/PM when we don't have 12-hours formats
   private handlePeriodOfDay(formattedTime: string): string {
     if (!this.currentTimeFormat.includes(TIME_FORMAT_PATTERNS.TWELVE_HOURS_WITHOUT_ZERO)) {
-      this.showPeriodOfday = false;
+      this.showPeriodOfDay = false;
       return formattedTime.replace(TIME_FORMAT_PATTERNS.PERIOD_OF_DAY, '');
     } else {
-      this.showPeriodOfday = true;
+      this.showPeriodOfDay = true;
       const isAM = new Date().getHours() < 12;
       this.periodOfDay = isAM ? TIME_FORMAT_PATTERNS.AM : TIME_FORMAT_PATTERNS.PM;
       return formattedTime.replace(TIME_FORMAT_PATTERNS.PERIOD_OF_DAY, this.periodOfDay);

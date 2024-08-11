@@ -5,11 +5,13 @@ import { DigitalClockComponent } from './digital-clock/digital-clock.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'
+import { DigitalSegmentComponent } from './digital-clock/digital-segment/digital-segment/digital-segment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DigitalClockComponent
+    DigitalClockComponent,
+    DigitalSegmentComponent
   ],
   imports: [
     BrowserModule,

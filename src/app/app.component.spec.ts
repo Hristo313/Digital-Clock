@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 import { INPUT_TIME_FORMATS, TIME_FORMAT_PATTERNS } from './shared/helpers/constants';
 import { DigitalClockComponent } from './digital-clock/digital-clock.component';
 import { FormsModule } from '@angular/forms';
+import { DigitalSegmentComponent } from './digital-clock/digital-segment/digital-segment/digital-segment.component';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -10,7 +11,7 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AppComponent, DigitalClockComponent],
+      declarations: [AppComponent, DigitalClockComponent, DigitalSegmentComponent],
       imports: [FormsModule]
     })
     .compileComponents();

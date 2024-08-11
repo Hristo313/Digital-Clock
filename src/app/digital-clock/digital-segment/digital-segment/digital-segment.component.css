@@ -1,0 +1,8 @@
+.segment {
+  fill: rgba(0, 0, 0, 0.15);
+  transition: 0.3s ease-in-out;
+}
+
+.segment.active {
+  fill: #0db829;
+}
