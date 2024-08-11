@@ -7,7 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class DigitalSegmentComponent {
   @Input() digit: string = '';
-
   private segmentMap: { [key: string]: string[] } = {
     '0': ['a', 'b', 'c', 'd', 'e', 'f'],
     '1': ['b', 'c'],

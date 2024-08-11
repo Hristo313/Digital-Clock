@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DigitalSegmentComponent } from './digital-segment.component';
 import { By } from '@angular/platform-browser';
 
