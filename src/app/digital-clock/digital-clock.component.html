@@ -14,19 +14,19 @@
     <div class="hour d-inline-block m-4 position-relative" [ngClass]="{'active': showHourDecorations}">
       <app-digital-segment [digit]="firstHourDigit"></app-digital-segment>
       <app-digital-segment [digit]="secondHourDigit"></app-digital-segment>
-      <div class="label">HOUR</div>
+      <div class="label" [ngClass]="{'active': showHourDecorations}">HOUR</div>
     </div>
 
     <div class="minute d-inline-block m-4 position-relative">
       <app-digital-segment [digit]="firstMinuteDigit"></app-digital-segment>
       <app-digital-segment [digit]="secondMinuteDigit"></app-digital-segment>
-      <div class="label">MINUTE</div>
+      <div class="label active">MINUTE</div>
     </div>
 
     <div class="second d-inline-block m-4 position-relative">
       <app-digital-segment [digit]="firstSecondDigit"></app-digital-segment>
       <app-digital-segment [digit]="secondSecondDigit"></app-digital-segment>
-      <div class="label">SECOND</div>
+      <div class="label active">SECOND</div>
     </div>
 
     <div *ngIf="showPeriodOfDay" class="period-of-day">

@@ -30,6 +30,9 @@
   display: block;
   text-align: center;
   font-size: 20px;
-  color: #0db829;
   margin-top: 10px;
+}
+
+.digital-clock .label.active {
+  color: #0db829;
 }
