@@ -1,8 +1,9 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { TIME_FORMAT_PATTERNS } from '../../../../src/app/shared/helpers/constants';
+import { TIME_FORMAT_PATTERNS } from '../shared/helpers/constants';
 import { DigitalClockComponent } from './digital-clock.component';
 import { DigitalSegmentComponent } from './digital-segment/digital-segment.component';
-import { SharedModule } from '../../../../src/app/shared/shared.module';
+import { CommonModule } from '@angular/common';
+import { DayPeriodPipe } from '../shared/pipes/day-period.pipe';
 
 describe('DigitalClockComponent', () => {
   let component: DigitalClockComponent;
@@ -10,8 +11,8 @@ describe('DigitalClockComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DigitalClockComponent, DigitalSegmentComponent],
-      imports: [SharedModule]
+      declarations: [DigitalClockComponent, DigitalSegmentComponent, DayPeriodPipe],
+      imports: [CommonModule]
     })
     .compileComponents();
 

@@ -4,13 +4,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms'
 import { DigitalClockModule } from '../../projects/digital-clock/src/lib/digital-clock.module';
-import { SharedModule } from './shared/shared.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    SharedModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     DigitalClockModule
