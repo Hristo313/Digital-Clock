@@ -40,8 +40,10 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
     const seconds = now.getSeconds();
     const twelveHours = twentyFourHours % 12 || 12;
 
-    let formattedTime = this.formatTime(twelveHours, twentyFourHours, minutes, seconds);
-    formattedTime = this.handlePeriodOfDay(formattedTime);
+    const formattedTime = this.formatTime(twelveHours, twentyFourHours, minutes, seconds);
+
+    // Skip AM/PM when we don't have 12-hours formats
+    this.showPeriodOfDay = this.currentTimeFormat.includes(TIME_FORMAT_PATTERNS.TWELVE_HOURS_WITHOUT_ZERO);
 
     this.assignTimeValues(formattedTime);
   }
@@ -57,18 +59,8 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
       .replace(TIME_FORMAT_PATTERNS.MINUTES_WITH_ZERO, formatCurrentTime(minutes, 2))
       .replace(TIME_FORMAT_PATTERNS.MINUTES_WITHOUT_ZERO, minutes.toString())
       .replace(TIME_FORMAT_PATTERNS.SECONDS_WITH_ZERO, formatCurrentTime(seconds, 2))
-      .replace(TIME_FORMAT_PATTERNS.SECONDS_WITHOUT_ZERO, seconds.toString());
-  }
-
-  // Skip AM/PM when we don't have 12-hours formats
-  private handlePeriodOfDay(formattedTime: string): string {
-    if (!this.currentTimeFormat.includes(TIME_FORMAT_PATTERNS.TWELVE_HOURS_WITHOUT_ZERO)) {
-      this.showPeriodOfDay = false;
-      return formattedTime.replace(TIME_FORMAT_PATTERNS.PERIOD_OF_DAY, '');
-    } else {
-      this.showPeriodOfDay = true;
-      return formattedTime.replace(TIME_FORMAT_PATTERNS.PERIOD_OF_DAY, '');
-    }
+      .replace(TIME_FORMAT_PATTERNS.SECONDS_WITHOUT_ZERO, seconds.toString())
+      .replace(TIME_FORMAT_PATTERNS.PERIOD_OF_DAY, '');
   }
 
   private assignTimeValues(formattedTime: string): void {
