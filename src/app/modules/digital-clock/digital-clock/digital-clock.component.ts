@@ -44,6 +44,7 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
 
     const formattedTime = this.formatTime(twelveHours, twentyFourHours, minutes, seconds);
 
+    this.currentTime = now;
     this.showPeriodOfDay = this.currentTimeFormat.includes(TIME_FORMAT_PATTERNS.TWELVE_HOURS_WITHOUT_ZERO);
 
     this.updateTimeDigits(formattedTime);
