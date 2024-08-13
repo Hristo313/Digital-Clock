@@ -34,7 +34,7 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
   }
 
   private updateCurrentTime(): void {
-    const now = this.currentTime;
+    const now = new Date();
     const twentyFourHours = now.getHours();
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
