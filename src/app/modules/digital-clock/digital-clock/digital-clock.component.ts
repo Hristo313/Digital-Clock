@@ -16,7 +16,7 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
   public secondMinuteDigit: string = '';
   public firstSecondDigit: string = '';
   public secondSecondDigit: string = '';
-  public periodOfDay: string = '';
+  public currentTime: Date = new Date();
   public showPeriodOfDay: boolean = false;
   public showHourDecorations: boolean = false;
   private destroy$ = new Subject<void>();
@@ -34,7 +34,7 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
   }
 
   private updateCurrentTime(): void {
-    const now = new Date();
+    const now = this.currentTime;
     const twentyFourHours = now.getHours();
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
@@ -67,9 +67,7 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
       return formattedTime.replace(TIME_FORMAT_PATTERNS.PERIOD_OF_DAY, '');
     } else {
       this.showPeriodOfDay = true;
-      const isAM = new Date().getHours() < 12;
-      this.periodOfDay = isAM ? TIME_FORMAT_PATTERNS.AM : TIME_FORMAT_PATTERNS.PM;
-      return formattedTime.replace(TIME_FORMAT_PATTERNS.PERIOD_OF_DAY, this.periodOfDay);
+      return formattedTime.replace(TIME_FORMAT_PATTERNS.PERIOD_OF_DAY, '');
     }
   }
 

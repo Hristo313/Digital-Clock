@@ -2,6 +2,7 @@ import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testin
 import { TIME_FORMAT_PATTERNS } from '../../../shared/helpers/constants';
 import { DigitalClockComponent } from './digital-clock.component';
 import { DigitalSegmentComponent } from './digital-segment/digital-segment.component';
+import { SharedModule } from '../../../shared/shared.module';
 
 describe('DigitalClockComponent', () => {
   let component: DigitalClockComponent;
@@ -9,7 +10,8 @@ describe('DigitalClockComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DigitalClockComponent, DigitalSegmentComponent]
+      declarations: [DigitalClockComponent, DigitalSegmentComponent],
+      imports: [SharedModule]
     })
     .compileComponents();
 
@@ -33,7 +35,6 @@ describe('DigitalClockComponent', () => {
     
     const now = new Date();
     const twelveHours = now.getHours() % 12 || 12;
-    const periodOfDay = now.getHours() < 12 ? TIME_FORMAT_PATTERNS.AM : TIME_FORMAT_PATTERNS.PM;
     
     const expectedHour = twelveHours.toString().padStart(2, '0');
     const expectedMinute = now.getMinutes().toString().padStart(2, '0');
@@ -45,7 +46,6 @@ describe('DigitalClockComponent', () => {
     expect(component.secondMinuteDigit).toBe(expectedMinute.charAt(1));
     expect(component.firstSecondDigit).toBe(expectedSecond.charAt(0));
     expect(component.secondSecondDigit).toBe(expectedSecond.charAt(1));
-    expect(component.periodOfDay).toBe(periodOfDay);
   });
 
   it('should stop updating time when component is destroyed', fakeAsync(() => {

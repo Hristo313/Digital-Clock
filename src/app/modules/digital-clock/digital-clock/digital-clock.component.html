@@ -30,7 +30,7 @@
     </div>
 
     <div *ngIf="showPeriodOfDay" class="period-of-day">
-      <span>{{ periodOfDay }}</span>
+      <span>{{ currentTime | dayPeriod }}</span>
     </div>
   </div>
 </div>
