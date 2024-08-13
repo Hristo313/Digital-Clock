@@ -10,12 +10,14 @@ import { TIME_FORMAT_PATTERNS } from '../../../shared/helpers/constants';
 })
 export class DigitalClockComponent implements OnInit, OnDestroy {
   @Input() currentTimeFormat: string = TIME_FORMAT_PATTERNS.DEFAULT_TIME_FORMAT;
-  public firstHourDigit: string = '';
-  public secondHourDigit: string = '';
-  public firstMinuteDigit: string = '';
-  public secondMinuteDigit: string = '';
-  public firstSecondDigit: string = '';
-  public secondSecondDigit: string = '';
+  public timeDigits = {
+    firstHourDigit: '',
+    secondHourDigit: '',
+    firstMinuteDigit: '',
+    secondMinuteDigit: '',
+    firstSecondDigit: '',
+    secondSecondDigit: ''
+  };
   public currentTime: Date = new Date();
   public showPeriodOfDay: boolean = false;
   public showHourDecorations: boolean = false;
@@ -42,12 +44,11 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
 
     const formattedTime = this.formatTime(twelveHours, twentyFourHours, minutes, seconds);
 
-    // Skip AM/PM when we don't have 12-hours formats
     this.showPeriodOfDay = this.currentTimeFormat.includes(TIME_FORMAT_PATTERNS.TWELVE_HOURS_WITHOUT_ZERO);
 
-    this.assignTimeValues(formattedTime);
+    this.updateTimeDigits(formattedTime);
   }
-  
+
   private formatTime(twelveHours: number, twentyFourHours: number, minutes: number, seconds: number): string {
     const formatCurrentTime = (number: number, length: number) => number.toString().padStart(length, '0');
   
@@ -63,29 +64,28 @@ export class DigitalClockComponent implements OnInit, OnDestroy {
       .replace(TIME_FORMAT_PATTERNS.PERIOD_OF_DAY, '');
   }
 
-  private assignTimeValues(formattedTime: string): void {
+  private updateTimeDigits(formattedTime: string): void {
     const timeParts = formattedTime.split(':').map(part => part.trim());
-  
+
     if (timeParts.length === 3) {
       this.showHourDecorations = true;
-      const [hoursPart, minutesPart, secondsPart] = timeParts;
-      this.firstHourDigit = hoursPart.length > 1 ? hoursPart.charAt(0) : '';
-      this.secondHourDigit = hoursPart.length > 1 ? hoursPart.charAt(1) : hoursPart.charAt(0);
-      this.firstMinuteDigit = minutesPart.length > 1 ? minutesPart.charAt(0) : '';
-      this.secondMinuteDigit = minutesPart.length > 1 ? minutesPart.charAt(1) : minutesPart.charAt(0);
-  
-      const splittedSecondsPart = secondsPart.split(' ');
-      this.firstSecondDigit = splittedSecondsPart[0].length > 1 ? splittedSecondsPart[0].charAt(0) : '';
-      this.secondSecondDigit = splittedSecondsPart[0].length > 1 ? splittedSecondsPart[0].charAt(1) : splittedSecondsPart[0].charAt(0);
+      this.setTimeDigitsFromParts(timeParts, true);
     } else if (timeParts.length === 2) {
       this.showHourDecorations = false;
-      const [minutesPart, secondsPart] = timeParts;
-      this.firstHourDigit = '';
-      this.secondHourDigit = '';
-      this.firstMinuteDigit = minutesPart.length > 1 ? minutesPart.charAt(0) : '';
-      this.secondMinuteDigit = minutesPart.length > 1 ? minutesPart.charAt(1) : minutesPart.charAt(0);
-      this.firstSecondDigit = secondsPart.length > 1 ? secondsPart.charAt(0) : '';
-      this.secondSecondDigit = secondsPart.length > 1 ? secondsPart.charAt(1) : secondsPart.charAt(0);
+      this.setTimeDigitsFromParts(timeParts, false);
     }
+  }
+
+  private setTimeDigitsFromParts(timeParts: string[], includeHours: boolean): void {
+    const [hoursPart, minutesPart, secondsPart] = includeHours ? timeParts : ['', ...timeParts];
+    
+    this.timeDigits.firstHourDigit = hoursPart.length > 1 ? hoursPart.charAt(0) : '';
+    this.timeDigits.secondHourDigit = hoursPart.length > 1 ? hoursPart.charAt(1) : hoursPart.charAt(0);
+    
+    this.timeDigits.firstMinuteDigit = minutesPart.length > 1 ? minutesPart.charAt(0) : '';
+    this.timeDigits.secondMinuteDigit = minutesPart.length > 1 ? minutesPart.charAt(1) : minutesPart.charAt(0);
+    
+    this.timeDigits.firstSecondDigit = secondsPart.length > 1 ? secondsPart.charAt(0) : '';
+    this.timeDigits.secondSecondDigit = secondsPart.length > 1 ? secondsPart.charAt(1) : secondsPart.charAt(0);
   }
 }
