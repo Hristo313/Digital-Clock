@@ -40,12 +40,12 @@ describe('DigitalClockComponent', () => {
     const expectedMinute = now.getMinutes().toString().padStart(2, '0');
     const expectedSecond = now.getSeconds().toString().padStart(2, '0');
     
-    expect(component.firstHourDigit).toBe(expectedHour.charAt(0));
-    expect(component.secondHourDigit).toBe(expectedHour.charAt(1));
-    expect(component.firstMinuteDigit).toBe(expectedMinute.charAt(0));
-    expect(component.secondMinuteDigit).toBe(expectedMinute.charAt(1));
-    expect(component.firstSecondDigit).toBe(expectedSecond.charAt(0));
-    expect(component.secondSecondDigit).toBe(expectedSecond.charAt(1));
+    expect(component.timeDigits.firstHourDigit).toBe(expectedHour.charAt(0));
+    expect(component.timeDigits.secondHourDigit).toBe(expectedHour.charAt(1));
+    expect(component.timeDigits.firstMinuteDigit).toBe(expectedMinute.charAt(0));
+    expect(component.timeDigits.secondMinuteDigit).toBe(expectedMinute.charAt(1));
+    expect(component.timeDigits.firstSecondDigit).toBe(expectedSecond.charAt(0));
+    expect(component.timeDigits.secondSecondDigit).toBe(expectedSecond.charAt(1));
   });
 
   it('should stop updating time when component is destroyed', fakeAsync(() => {
@@ -53,9 +53,9 @@ describe('DigitalClockComponent', () => {
     tick(1000);
     fixture.detectChanges();
     const timeBeforeDestruction = {
-      hours: component.firstHourDigit + component.secondHourDigit,
-      minutes: component.firstMinuteDigit + component.secondMinuteDigit,
-      seconds: component.firstSecondDigit + component.secondSecondDigit
+      hours: component.timeDigits.firstHourDigit + component.timeDigits.secondHourDigit,
+      minutes: component.timeDigits.firstMinuteDigit + component.timeDigits.secondMinuteDigit,
+      seconds: component.timeDigits.firstSecondDigit + component.timeDigits.secondSecondDigit
     };
 
     component.ngOnDestroy();
@@ -64,9 +64,9 @@ describe('DigitalClockComponent', () => {
     fixture.detectChanges();
     
     const timeAfterDestruction = {
-      hours: component.firstHourDigit + component.secondHourDigit,
-      minutes: component.firstMinuteDigit + component.secondMinuteDigit,
-      seconds: component.firstSecondDigit + component.secondSecondDigit
+      hours: component.timeDigits.firstHourDigit + component.timeDigits.secondHourDigit,
+      minutes: component.timeDigits.firstMinuteDigit + component.timeDigits.secondMinuteDigit,
+      seconds: component.timeDigits.firstSecondDigit + component.timeDigits.secondSecondDigit
     };
     
     expect(timeAfterDestruction).toEqual(timeBeforeDestruction);
