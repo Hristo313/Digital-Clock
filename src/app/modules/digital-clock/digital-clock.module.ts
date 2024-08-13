@@ -1,16 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { DigitalClockComponent } from './digital-clock/digital-clock.component';
 import { DigitalSegmentComponent } from './digital-clock/digital-segment/digital-segment.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
     DigitalClockComponent,
     DigitalSegmentComponent
   ],
-  imports: [
-    CommonModule
-  ],
+  imports: [SharedModule],
   exports: [DigitalClockComponent]
 })
 export class DigitalClockModule { }
