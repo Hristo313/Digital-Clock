@@ -1,6 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { DigitalClockComponent } from './digital-clock/digital-clock.component';
+import { DigitalClockComponent } from './modules/digital-clock/digital-clock/digital-clock.component';
 
 export const routes: Routes = [
   { path: 'digital-clock', component: DigitalClockComponent },

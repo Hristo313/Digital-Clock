@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DigitalSegmentComponent } from './digital-segment.component';
 import { By } from '@angular/platform-browser';
+import { DigitalSegmentComponent } from './digital-segment.component';
 
 describe('DigitalSegmentComponent', () => {
   let component: DigitalSegmentComponent;

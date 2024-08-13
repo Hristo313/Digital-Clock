@@ -1,7 +1,7 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { TIME_FORMAT_PATTERNS } from '../../../shared/helpers/constants';
 import { DigitalClockComponent } from './digital-clock.component';
-import { TIME_FORMAT_PATTERNS } from '../shared/helpers/constants';
-import { DigitalSegmentComponent } from './digital-segment/digital-segment/digital-segment.component';
+import { DigitalSegmentComponent } from './digital-segment/digital-segment.component';
 
 describe('DigitalClockComponent', () => {
   let component: DigitalClockComponent;
