@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-digital-segment',
+  selector: 'lib-digital-segment',
   templateUrl: './digital-segment.component.html',
   styleUrl: './digital-segment.component.css'
 })

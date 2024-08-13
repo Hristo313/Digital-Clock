@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms'
-import { DigitalClockModule } from './modules/digital-clock/digital-clock.module';
+import { DigitalClockModule } from '../../projects/digital-clock/src/lib/digital-clock.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({

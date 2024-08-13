@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Subject, interval } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { TIME_FORMAT_PATTERNS } from '../../../shared/helpers/constants';
+import { TIME_FORMAT_PATTERNS } from '../../../../src/app/shared/helpers/constants';
 
 @Component({
-  selector: 'app-digital-clock',
+  selector: 'lib-digital-clock',
   templateUrl: './digital-clock.component.html',
   styleUrl: './digital-clock.component.css',
 })

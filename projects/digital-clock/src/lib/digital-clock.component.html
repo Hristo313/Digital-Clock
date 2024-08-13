@@ -12,20 +12,20 @@
     </svg>
 
     <div class="hour d-inline-block m-4 position-relative" [ngClass]="{'active': showHourDecorations}">
-      <app-digital-segment [digit]="timeDigits.firstHourDigit"></app-digital-segment>
-      <app-digital-segment [digit]="timeDigits.secondHourDigit"></app-digital-segment>
+      <lib-digital-segment [digit]="timeDigits.firstHourDigit"></lib-digital-segment>
+      <lib-digital-segment [digit]="timeDigits.secondHourDigit"></lib-digital-segment>
       <div class="label" [ngClass]="{'active': showHourDecorations}">HOUR</div>
     </div>
 
     <div class="minute d-inline-block m-4 position-relative">
-      <app-digital-segment [digit]="timeDigits.firstMinuteDigit"></app-digital-segment>
-      <app-digital-segment [digit]="timeDigits.secondMinuteDigit"></app-digital-segment>
+      <lib-digital-segment [digit]="timeDigits.firstMinuteDigit"></lib-digital-segment>
+      <lib-digital-segment [digit]="timeDigits.secondMinuteDigit"></lib-digital-segment>
       <div class="label active">MINUTE</div>
     </div>
 
     <div class="second d-inline-block m-4 position-relative">
-      <app-digital-segment [digit]="timeDigits.firstSecondDigit"></app-digital-segment>
-      <app-digital-segment [digit]="timeDigits.secondSecondDigit"></app-digital-segment>
+      <lib-digital-segment [digit]="timeDigits.firstSecondDigit"></lib-digital-segment>
+      <lib-digital-segment [digit]="timeDigits.secondSecondDigit"></lib-digital-segment>
       <div class="label active">SECOND</div>
     </div>
 

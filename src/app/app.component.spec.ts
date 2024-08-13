@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { INPUT_TIME_FORMATS, TIME_FORMAT_PATTERNS } from './shared/helpers/constants';
 import { FormsModule } from '@angular/forms';
-import { DigitalClockModule } from './modules/digital-clock/digital-clock.module';
+import { DigitalClockModule } from '../../projects/digital-clock/src/lib/digital-clock.module';
 
 describe('AppComponent', () => {
   let component: AppComponent;
